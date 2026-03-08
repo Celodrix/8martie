@@ -86,4 +86,100 @@ animation:fall linear forwards;
 
 .firework{
 position:fixed;
+width:6px;
+height:6px;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);opacity:1}
+100%{transform:scale(15);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" onclick="openCard()" id="card">
+
+<div class="side front">
+🌸 Apasă să deschizi felicitarea 🌸
+</div>
+
+<div class="side back">
+💐 La mulți ani de 8 Martie!<br><br>
+Pentru tine ❤️<br>
+Să ai o primăvară plină de bucurii!
+
+<button onclick="share(event)">Trimite felicitarea 📲</button>
+</div>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function openCard(){
+const card=document.getElementById("card");
+card.classList.toggle("open");
+launchFireworks();
+}
+
+const simboluri=["🌸","🌷","🌹","💖","💐","❤️"];
+
+function creeaza(){
+const el=document.createElement("div");
+
+el.className="fall";
+el.innerHTML=simboluri[Math.floor(Math.random()*simboluri.length)];
+
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration=(3+Math.random()*5)+"s";
+el.style.fontSize=(20+Math.random()*30)+"px";
+
+
+document.body.appendChild(el);
+
+setTimeout(()=>{el.remove()},8000);
+}
+
+setInterval(creeaza,300);
+
+function launchFireworks(){
+for(let i=0;i<20;i++){
+const f=document.createElement("div");
+f.className="firework";
+
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*80+"vh";
+
+f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+
+document.body.appendChild(f);
+
+setTimeout(()=>{f.remove()},1000);
+}
+}
+
+function share(e){
+e.stopPropagation();
+if(navigator.share){
+navigator.share({
+ title:"Felicitare 8 Martie",
+ text:"🌸 La mulți ani de 8 Martie!",
+ url:window.location.href
+});
+}else{
+alert("Copiază linkul și trimite-l pe WhatsApp sau Messenger.");
+}
+}
+
+</script>
+
+</body>
 </html>
