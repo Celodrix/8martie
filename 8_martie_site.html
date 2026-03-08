@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Mulți Ani de 8 Martie</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#ff9ecb,#ffd6e7,#ffeef6);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+animation:fade 2s ease;
+max-width:500px;
+}
+
+h1{
+font-size:42px;
+color:#c21875;
+margin-bottom:10px;
+}
+
+p{
+font-size:20px;
+color:#7a004b;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:12px;
+background:#ff4fa3;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#e63e8f;
+transform:scale(1.05);
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(30px);} 
+to{opacity:1; transform:translateY(0);} 
+}
+
+.falling{
+position:fixed;
+top:-50px;
+font-size:24px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);} 
+100%{transform:translateY(110vh);} 
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+<h1>🌸 La Mulți Ani! 🌸</h1>
+<p>Cu ocazia zilei de <b>8 Martie</b>, îți doresc multă sănătate, fericire și o primăvară plină de bucurii!</p>
+<p>🌷 Să ai o zi minunată! 🌷</p>
+<button onclick="mesaj()">Apasă pentru surpriză 💖</button>
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function mesaj(){
+alert("🌹 La mulți ani de 8 Martie! Să ai parte de iubire, zâmbete și o primăvară minunată! 💐");
+}
+
+const simboluri=["🌸","🌺","🌹","💖","💗","🌷"];
+
+function creeazaElement(){
+const el=document.createElement("div");
+el.className="falling";
+el.innerHTML=simboluri[Math.floor(Math.random()*simboluri.length)];
+
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration=(3+Math.random()*5)+"s";
+el.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(el);
+
+setTimeout(()=>{el.remove();},8000);
+}
+
+setInterval(creeazaElement,300);
+</script>
+
+</body>
+</html>
