@@ -3,113 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Mulți Ani de 8 Martie</title>
+<title>Felicitare 8 Martie</title>
 
 <style>
 body{
 margin:0;
 height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9ecb,#ffd6e7,#ffeef6);
+font-family:Arial;
 overflow:hidden;
-font-family: Arial, sans-serif;
-background: linear-gradient(135deg,#ff9ecb,#ffd6e7,#ffeef6);
+}
+
+.card{
+width:340px;
+height:230px;
+position:relative;
+transform-style:preserve-3d;
+transition:1s;
+cursor:pointer;
+}
+
+.card.open{
+transform:rotateY(180deg);
+}
+
+.side{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:20px;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-}
-
-.card{
-background:white;
-padding:40px;
-border-radius:25px;
+padding:20px;
 box-shadow:0 15px 35px rgba(0,0,0,0.2);
-animation:fade 2s ease;
-max-width:500px;
 }
 
-h1{
-font-size:42px;
+.front{
+background:white;
+font-size:26px;
 color:#c21875;
-margin-bottom:10px;
 }
 
-p{
+.back{
+background:#fff0f6;
+transform:rotateY(180deg);
 font-size:20px;
 color:#7a004b;
+flex-direction:column;
 }
 
 button{
-margin-top:20px;
-padding:12px 25px;
+margin-top:15px;
+padding:10px 18px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#ff4fa3;
 color:white;
-font-size:18px;
+font-size:16px;
 cursor:pointer;
-transition:0.3s;
 }
 
 button:hover{
-background:#e63e8f;
 transform:scale(1.05);
 }
 
-@keyframes fade{
-from{opacity:0; transform:translateY(30px);} 
-to{opacity:1; transform:translateY(0);} 
-}
-
-.falling{
+.fall{
 position:fixed;
-top:-50px;
-font-size:24px;
+top:-20px;
 animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{transform:translateY(-50px);} 
-100%{transform:translateY(110vh);} 
+0%{transform:translateY(-20px)}
+100%{transform:translateY(110vh)}
 }
 
-</style>
-</head>
-<body>
-
-<div class="card">
-<h1>🌸 La Mulți Ani! 🌸</h1>
-<p>Cu ocazia zilei de <b>8 Martie</b>, îți doresc multă sănătate, fericire și o primăvară plină de bucurii!</p>
-<p>🌷 Să ai o zi minunată! 🌷</p>
-<button onclick="mesaj()">Apasă pentru surpriză 💖</button>
-</div>
-
-<audio autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function mesaj(){
-alert("🌹 La mulți ani de 8 Martie! Să ai parte de iubire, zâmbete și o primăvară minunată! 💐");
-}
-
-const simboluri=["🌸","🌺","🌹","💖","💗","🌷"];
-
-function creeazaElement(){
-const el=document.createElement("div");
-el.className="falling";
-el.innerHTML=simboluri[Math.floor(Math.random()*simboluri.length)];
-
-el.style.left=Math.random()*100+"vw";
-el.style.animationDuration=(3+Math.random()*5)+"s";
-el.style.fontSize=(20+Math.random()*30)+"px";
-
-document.body.appendChild(el);
-
-setTimeout(()=>{el.remove();},8000);
-}
-
-setInterval(creeazaElement,300);
-</script>
-
-</body>
+.firework{
+position:fixed;
 </html>
