@@ -58,21 +58,6 @@ color:#7a004b;
 flex-direction:column;
 }
 
-button{
-margin-top:15px;
-padding:10px 18px;
-border:none;
-border-radius:10px;
-background:#ff4fa3;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
 .fall{
 position:fixed;
 top:-20px;
@@ -94,7 +79,7 @@ animation:explode 1s ease-out forwards;
 
 @keyframes explode{
 0%{transform:scale(1);opacity:1}
-100%{transform:scale(15);opacity:0}
+100%{transform:scale(18);opacity:0}
 }
 
 </style>
@@ -112,12 +97,11 @@ animation:explode 1s ease-out forwards;
 💐 La mulți ani de 8 Martie!<br><br>
 Pentru tine ❤️<br>
 Să ai o primăvară plină de bucurii!
-
-<button onclick="share(event)">Trimite felicitarea 📲</button>
 </div>
 
 </div>
 
+<!-- Muzică pe fundal -->
 <audio autoplay loop>
 <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
@@ -151,7 +135,12 @@ setTimeout(()=>{el.remove()},8000);
 setInterval(creeaza,300);
 
 function launchFireworks(){
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
+createFirework();
+}
+}
+
+function createFirework(){
 const f=document.createElement("div");
 f.className="firework";
 
@@ -164,20 +153,11 @@ document.body.appendChild(f);
 
 setTimeout(()=>{f.remove()},1000);
 }
-}
 
-function share(e){
-e.stopPropagation();
-if(navigator.share){
-navigator.share({
- title:"Felicitare 8 Martie",
- text:"🌸 La mulți ani de 8 Martie!",
- url:window.location.href
-});
-}else{
-alert("Copiază linkul și trimite-l pe WhatsApp sau Messenger.");
-}
-}
+// artificii ocazionale pe fundal
+setInterval(()=>{
+createFirework();
+},1500);
 
 </script>
 
